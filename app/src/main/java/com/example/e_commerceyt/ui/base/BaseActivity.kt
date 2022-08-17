@@ -16,7 +16,7 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel>(
 
     internal val disposable: CompositeDisposable by lazy { CompositeDisposable() }
 
-    val binding by lazy {
+     val binding by lazy {
         DataBindingUtil.setContentView(this,layoutId) as DB
     }
     val viewModel by lazy {
@@ -25,8 +25,9 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel>(
 
     abstract fun onInitDataBinding()
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
         binding.lifecycleOwner = this
         onInitDataBinding()
     }
